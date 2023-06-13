@@ -1,0 +1,31 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": ["ecs:List*", "ecs:Describe*"],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:ecs:${region}:${account_id}:cluster/${cluster_name}",
+        "arn:aws:ecs:${region}:${account-id}:task/${cluster-name}/*"
+      ]
+    },
+    {
+      "Action": ["ecs:ListTasks", "ecs:DescribeTaskDefinition"],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Action": ["s3:GetObject", "s3:ListBucket"],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::${s3_bucket}",
+        "arn:aws:s3:::${s3_bucket}/*"
+      ]
+    },
+    {
+      "Action": ["aps:RemoteWrite"],
+      "Effect": "Allow",
+      "Resource": "${AMP_resource_arn}"
+    }
+  ]
+}
