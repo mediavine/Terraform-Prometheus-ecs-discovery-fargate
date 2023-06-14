@@ -11,9 +11,9 @@ resource "aws_iam_policy" "prom_read_write_policy" {
   description = "Policy to allow ecs discovery of prometheus metrics and writes to AMP"
 
   policy = templatefile("${path.module}/policies/prometheus-amp.json", {
-    account_id = data.aws_caller_identity.current.account_id
-    region     = var.region
-    cluster    = var.cluster_name
-    s3_bucket  = var.s3_bucket
+    account_id   = data.aws_caller_identity.current.account_id
+    region       = var.region
+    cluster_name = var.cluster_name
+    s3_bucket    = var.s3_bucket
   })
 }
