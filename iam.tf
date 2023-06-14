@@ -1,6 +1,6 @@
 resource "aws_iam_role" "prometheus_role" {
   name               = "${var.environment}-${var.name_prefix}-role"
-  assume_role_policy = aws_iam_policy.prom_read_write_policy.policy
+  assume_role_policy = jsonencode(aws_iam_policy.prom_read_write_policy.policy)
 
   depends_on = [aws_iam_policy.prom_read_write_policy]
 }
