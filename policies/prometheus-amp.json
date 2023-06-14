@@ -6,7 +6,7 @@
       "Effect": "Allow",
       "Resource": [
         "arn:aws:ecs:${region}:${account_id}:cluster/${cluster_name}",
-        "arn:aws:ecs:${region}:${account-id}:task/${cluster_name}/*"
+        "arn:aws:ecs:${region}:${account_id}:task/${cluster_name}/*"
       ]
     },
     {

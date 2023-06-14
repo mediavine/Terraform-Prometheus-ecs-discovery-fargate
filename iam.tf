@@ -15,5 +15,6 @@ resource "aws_iam_policy" "prom_read_write_policy" {
     region       = var.region
     cluster_name = var.cluster_name
     s3_bucket    = var.s3_bucket
+    AMP_resource_arn = var.AMP_resource_arn
   })
 }
