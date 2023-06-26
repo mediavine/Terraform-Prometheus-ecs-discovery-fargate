@@ -1,7 +1,7 @@
 resource "aws_ecs_task_definition" "prometheus-fargate" {
   family                   = "prometheus-ecs-fargate-discovery"
-  execution_role_arn       = var.prom_execution_role_arn == "" ? aws_iam_role.prometheus_role.arn : var.prom_execution_role_arn
-  task_role_arn            = var.prom_task_role_arn == "" ? aws_iam_role.prometheus_role.arn : var.prom_task_role_arn
+  execution_role_arn       = var.prom_execution_role_arn // == "" ? aws_iam_role.prometheus_role.arn : var.prom_execution_role_arn
+  task_role_arn            = var.prom_task_role_arn // == "" ? aws_iam_role.prometheus_role.arn : var.prom_task_role_arn
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = var.prom_cpu
