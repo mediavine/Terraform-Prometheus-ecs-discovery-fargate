@@ -18,6 +18,7 @@ resource "aws_ecs_task_definition" "prometheus-fargate" {
       logConfiguration = {
         logDriver = "awslogs",
         options = {
+          "awslogs-create-group": "True",
           "awslogs-group" : "/ecs/ecs-prometheus",
           "awslogs-region" : var.region,
           "awslogs-stream-prefix" : "prometheus-ecs-discovery"
@@ -40,6 +41,7 @@ resource "aws_ecs_task_definition" "prometheus-fargate" {
       logConfiguration = {
         logDriver = "awslogs",
         options = {
+          "awslogs-create-group": "True",
           "awslogs-group" : "/ecs/ecs-prometheus",
           "awslogs-region" : var.region,
           "awslogs-stream-prefix" : "prometheus"
@@ -48,7 +50,7 @@ resource "aws_ecs_task_definition" "prometheus-fargate" {
       environment = [
         {
           name  = "S3_CONFIG_LOCATION",
-          value = "s3://${var.s3_bucket}/prometheus.yml"
+          value = "s3://${aws_s3_bucket.prometheus_configs.bucket}/prometheus.yml"
         }
       ],
       mountPoints = [
